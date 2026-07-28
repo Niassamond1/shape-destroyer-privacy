@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shape Destroyer — Privacy Policy</title>
+  <meta name="description" content="Privacy policy for the Shape Destroyer mobile game." />
+  <style>
+    :root {
+      --bg: #060a14;
+      --panel: #0c1424;
+      --border: #1e3a5f;
+      --text: #e8f1ff;
+      --muted: #8aa0b8;
+      --glow: #3dd6ff;
+      --accent: #1a8cff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(1200px 600px at 50% -10%, #0f2744 0%, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--glow);
+      margin: 0 0 8px;
+      text-shadow: 0 0 24px rgba(61, 214, 255, 0.35);
+    }
+    .meta { color: var(--muted); font-size: 0.95rem; margin-bottom: 28px; }
+    .lang {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .lang button {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .lang button.active {
+      color: var(--glow);
+      border-color: var(--glow);
+      box-shadow: 0 0 12px rgba(61, 214, 255, 0.25);
+    }
+    section {
+      background: color-mix(in srgb, var(--panel) 92%, black);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 18px 16px;
+      margin-bottom: 14px;
+    }
+    h2 {
+      margin: 0 0 8px;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--glow);
+    }
+    p, li { color: var(--text); opacity: 0.92; }
+    ul { padding-left: 1.2rem; margin: 0.4rem 0 0; }
+    li { margin: 0.35rem 0; }
+    a { color: var(--accent); }
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Shape Destroyer</h1>
+    <p class="meta" id="updated-label">Privacy Policy · Updated July 2026</p>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="btn-en" class="active" onclick="setLang('en')">EN</button>
+      <button type="button" id="btn-pt" onclick="setLang('pt')">PT</button>
+    </div>
+
+    <div id="content-en">
+      <section>
+        <h2>Summary</h2>
+        <p>Shape Destroyer is a local-first game. Progress lives mainly on your device in an encrypted database. Cloud features (account, save sync, notifications) use Google Firebase when you sign in.</p>
+      </section>
+      <section>
+        <h2>What we may collect</h2>
+        <ul>
+          <li>Account email and ID if you sign in (Firebase Auth).</li>
+          <li>Optional encrypted cloud save of game progress.</li>
+          <li>Push notification token for inbox messages.</li>
+          <li>Bug reports you choose to send (title and description).</li>
+          <li>Usage analytics on Android/iOS (screens and key game events) via Firebase Analytics — not on Windows.</li>
+          <li>Gameplay data stored on your device (encrypted).</li>
+        </ul>
+      </section>
+      <section>
+        <h2>How we use it</h2>
+        <p>We use this data to run your account, restore progress across devices, send in-game messages, improve the game from reports, and understand which features are used. We do not sell your personal data.</p>
+      </section>
+      <section>
+        <h2>Analytics</h2>
+        <p>On mobile we measure app opens, screens visited, and actions such as login, starting/finishing a run, opening chests, cloud save, and bug reports. Events are aggregated and do not include your email or player name.</p>
+      </section>
+      <section>
+        <h2>Sharing</h2>
+        <p>Data is processed through Firebase (Google) for authentication, database, messaging, and analytics. We do not share your data with other advertisers.</p>
+      </section>
+      <section>
+        <h2>Account deletion</h2>
+        <p>In the app (Account screen), signed-in players can delete their account. This removes Firebase Auth credentials and cloud nodes we control for that user (profile, FCM token, cloud save, inbox). Local encrypted data on the device is wiped. Bug reports already submitted may remain for support until purged by staff. Analytics aggregates already processed by Google are not personally reversed.</p>
+      </section>
+      <section>
+        <h2>Contact</h2>
+        <p>Use the in-app bug report after signing in, or contact the developer through the Google Play store listing.</p>
+      </section>
+    </div>
+
+    <div id="content-pt" class="hidden">
+      <section>
+        <h2>Resumo</h2>
+        <p>Shape Destroyer é um jogo local-first. O progresso fica principalmente no seu aparelho, em banco criptografado. Recursos na nuvem (conta, sync, notificações) usam Google Firebase quando você entra.</p>
+      </section>
+      <section>
+        <h2>O que podemos recolher</h2>
+        <ul>
+          <li>E-mail e ID da conta se você entrar (Firebase Auth).</li>
+          <li>Save opcional criptografado do progresso.</li>
+          <li>Token de notificação para mensagens da inbox.</li>
+          <li>Reportes de bug que você enviar (título e descrição).</li>
+          <li>Analytics de uso no Android/iOS (telas e eventos-chave) via Firebase Analytics — não no Windows.</li>
+          <li>Dados de jogo no dispositivo (criptografados).</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Como usamos</h2>
+        <p>Usamos esses dados para conta, restaurar progresso, enviar mensagens, melhorar com reportes e entender o uso das funções. Não vendemos seus dados pessoais.</p>
+      </section>
+      <section>
+        <h2>Analytics</h2>
+        <p>No mobile medimos abertura do app, telas e ações como login, começar/terminar corrida, baús, save na nuvem e reportes. Os eventos são agregados e não incluem e-mail nem nome do jogador.</p>
+      </section>
+      <section>
+        <h2>Compartilhamento</h2>
+        <p>Os dados passam pelo Firebase (Google) para auth, banco, mensagens e analytics. Não compartilhamos com outros anunciantes.</p>
+      </section>
+      <section>
+        <h2>Exclusão de conta</h2>
+        <p>No app (tela Conta), jogadores logados podem excluir a conta. Isso remove as credenciais do Firebase Auth e os nós na nuvem que controlamos para esse usuário (perfil, token FCM, save, inbox). Os dados locais criptografados no aparelho são apagados. Reportes de bug já enviados podem permanecer para suporte até a equipe limpar. Agregados de Analytics já processados pelo Google não são revertidos individualmente.</p>
+      </section>
+      <section>
+        <h2>Contato</h2>
+        <p>Use o reporte de bug no app após entrar, ou fale com o desenvolvedor pela página do Google Play.</p>
+      </section>
+    </div>
+
+    <footer>
+      © Shape Destroyer — Privacy Policy
+    </footer>
+  </main>
+  <script>
+    function setLang(lang) {
+      const en = document.getElementById('content-en');
+      const pt = document.getElementById('content-pt');
+      const btnEn = document.getElementById('btn-en');
+      const btnPt = document.getElementById('btn-pt');
+      const updated = document.getElementById('updated-label');
+      const isPt = lang === 'pt';
+      en.classList.toggle('hidden', isPt);
+      pt.classList.toggle('hidden', !isPt);
+      btnEn.classList.toggle('active', !isPt);
+      btnPt.classList.toggle('active', isPt);
+      updated.textContent = isPt
+        ? 'Política de privacidade · Atualizado julho 2026'
+        : 'Privacy Policy · Updated July 2026';
+      document.documentElement.lang = isPt ? 'pt' : 'en';
+    }
+  </script>
+</body>
+</html>
