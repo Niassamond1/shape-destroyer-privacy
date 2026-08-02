@@ -86,7 +86,7 @@
 <body>
   <main>
     <h1>Shape Destroyer</h1>
-    <p class="meta" id="updated-label">Privacy Policy · Updated July 2026</p>
+    <p class="meta" id="updated-label">Privacy Policy · Updated August 2026</p>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" id="btn-en" class="active" onclick="setLang('en')">EN</button>
       <button type="button" id="btn-pt" onclick="setLang('pt')">PT</button>
@@ -95,82 +95,88 @@
     <div id="content-en">
       <section>
         <h2>Summary</h2>
-        <p>Shape Destroyer is a local-first game. Progress lives mainly on your device in an encrypted database. Cloud features (account, save sync, notifications) use Google Firebase when you sign in.</p>
+        <p>Shape Destroyer is a local-first game. Progress lives mainly on your device in an encrypted database. Cloud features (account, save sync, notifications) use Google Firebase when you sign in. Weekly Event leaderboards, seasons, and reward delivery use Supabase.</p>
       </section>
       <section>
         <h2>What we may collect</h2>
         <ul>
           <li>Account email and ID if you sign in (Firebase Auth).</li>
-          <li>Optional encrypted cloud save of game progress.</li>
-          <li>Push notification token for inbox messages.</li>
+          <li>Optional encrypted cloud save of game progress (Firebase).</li>
+          <li>Push notification token for inbox messages and event rewards (FCM).</li>
           <li>Bug reports you choose to send (title and description).</li>
           <li>Usage analytics on Android/iOS (screens and key game events) via Firebase Analytics — not on Windows.</li>
           <li>Crash diagnostics on Android/iOS via Firebase Crashlytics (stack traces and device info).</li>
-          <li>Gameplay data stored on your device (encrypted).</li>
+          <li>Gameplay data stored on your device (encrypted), including Weekly Event tickets and pending offline run queues in your local save.</li>
+          <li>When signed in and playing Weekly Events: run results (level reached, kill score / duration, Firebase user id, display name) and FCM token for reward delivery via our Supabase backend.</li>
         </ul>
       </section>
       <section>
         <h2>How we use it</h2>
-        <p>We use this data to run your account, restore progress across devices, send in-game messages, improve the game from reports, and understand which features are used. We do not sell your personal data.</p>
+        <p>We use this data to run your account, restore progress across devices, send in-game messages, improve the game from reports, understand which features are used, and operate Weekly Events (leaderboards and season rewards). Campaign play works offline; event rankings require sign-in. We do not sell your personal data.</p>
+      </section>
+      <section>
+        <h2>Storage</h2>
+        <p>Progress lives mainly on your device (encrypted). Cloud saves and account data are stored in Firebase when you sign in and sync. Weekly Event leaderboard rows and season data are stored in Supabase (PostgreSQL) via secure server functions. Analytics events are processed by Google Firebase. Logging out can wipe the local encrypted database on this device.</p>
       </section>
       <section>
         <h2>Analytics</h2>
-        <p>On mobile we measure app opens, screens visited, and actions such as login, starting/finishing a run, opening chests, cloud save, and bug reports. Events are aggregated and do not include your email or player name.</p>
+        <p>On mobile we measure app opens, screens visited, and actions such as login, starting/finishing a run, opening chests, cloud save, and bug reports. Events are aggregated and do not include your email or player name. Analytics is not collected on the Windows build.</p>
       </section>
       <section>
         <h2>Sharing</h2>
-        <p>Data is processed through Firebase (Google) for authentication, database, messaging, and analytics. We do not share your data with other advertisers.</p>
+        <p>Data is processed through Firebase (Google) for authentication, database, messaging, and analytics, and through Supabase for Weekly Event leaderboards, seasons, and reward pushes. We do not share your data with other advertisers. Staying signed out avoids event cloud features (campaign still works locally).</p>
       </section>
       <section>
         <h2>Account deletion</h2>
-        <p>In the app (Account screen), signed-in players can delete their account. This removes Firebase Auth credentials and cloud nodes we control for that user (profile, FCM token, cloud save, inbox). Local encrypted data on the device is wiped. Bug reports already submitted may remain for support until purged by staff. Analytics aggregates already processed by Google are not personally reversed.</p>
+        <p>In the app (Account screen), signed-in players can delete their account. This removes Firebase Auth credentials and cloud nodes we control for that user (profile, FCM token, cloud save, inbox). Local encrypted data on the device is wiped. Timed-event leaderboard rows in Supabase may remain until purged as part of event cleanup. Bug reports already submitted may remain for support until purged by staff. Analytics aggregates already processed by Google are not personally reversed.</p>
       </section>
       <section>
         <h2>Contact</h2>
-        <!-- 📧 E-mail oficial adicionado -->
-        <p>You can reach us at <strong>destroyershape@gmail.com</strong> for any privacy or support questions.  
-        You may also use the in-app bug report after signing in, or contact the developer through the Google Play store listing.</p>
+        <p>You can reach us at <strong><a href="mailto:destroyershape@gmail.com">destroyershape@gmail.com</a></strong> for any privacy or support questions. You may also use the in-app bug report after signing in, or contact the developer through the Google Play store listing.</p>
       </section>
     </div>
 
     <div id="content-pt" class="hidden">
       <section>
         <h2>Resumo</h2>
-        <p>Shape Destroyer é um jogo local-first. O progresso fica principalmente no seu aparelho, em banco criptografado. Recursos na nuvem (conta, sync, notificações) usam Google Firebase quando você entra.</p>
+        <p>Shape Destroyer é um jogo local-first. O progresso fica principalmente no seu aparelho, em banco criptografado. Recursos na nuvem (conta, sync, notificações) usam Google Firebase quando você entra. Rankings, temporadas e entrega de recompensas dos Eventos Semanais usam Supabase.</p>
       </section>
       <section>
         <h2>O que podemos recolher</h2>
         <ul>
           <li>E-mail e ID da conta se você entrar (Firebase Auth).</li>
-          <li>Save opcional criptografado do progresso.</li>
-          <li>Token de notificação para mensagens da inbox.</li>
+          <li>Save opcional criptografado do progresso (Firebase).</li>
+          <li>Token de notificação para mensagens da inbox e recompensas de eventos (FCM).</li>
           <li>Reportes de bug que você enviar (título e descrição).</li>
           <li>Analytics de uso no Android/iOS (telas e eventos-chave) via Firebase Analytics — não no Windows.</li>
           <li>Diagnóstico de crashes no Android/iOS via Firebase Crashlytics (stack traces e info do aparelho).</li>
-          <li>Dados de jogo no dispositivo (criptografados).</li>
+          <li>Dados de jogo no dispositivo (criptografados), incluindo tickets de Eventos Semanais e fila de corridas pendentes no save local.</li>
+          <li>Quando logado e jogando Eventos Semanais: resultados (nível, pontuação de kills / duração, ID Firebase, nome) e token FCM para recompensas via nosso backend Supabase.</li>
         </ul>
       </section>
       <section>
         <h2>Como usamos</h2>
-        <p>Usamos esses dados para conta, restaurar progresso, enviar mensagens, melhorar com reportes e entender o uso das funções. Não vendemos seus dados pessoais.</p>
+        <p>Usamos esses dados para conta, restaurar progresso, enviar mensagens, melhorar com reportes, entender o uso das funções e operar Eventos Semanais (ranking e recompensas da temporada). A campanha funciona offline; o ranking de eventos exige login. Não vendemos seus dados pessoais.</p>
+      </section>
+      <section>
+        <h2>Armazenamento</h2>
+        <p>O progresso fica principalmente no seu aparelho (criptografado). Saves na nuvem e dados de conta ficam no Firebase quando você entra e sincroniza. Ranking e temporadas de eventos ficam no Supabase (PostgreSQL) via funções seguras no servidor. Eventos de Analytics são processados pelo Google Firebase. Sair da conta pode apagar o banco local criptografado neste dispositivo.</p>
       </section>
       <section>
         <h2>Analytics</h2>
-        <p>No mobile medimos abertura do app, telas e ações como login, começar/terminar corrida, baús, save na nuvem e reportes. Os eventos são agregados e não incluem e-mail nem nome do jogador.</p>
+        <p>No mobile medimos abertura do app, telas e ações como login, começar/terminar corrida, baús, save na nuvem e reportes. Os eventos são agregados e não incluem e-mail nem nome do jogador. Analytics não é coletado no build Windows.</p>
       </section>
       <section>
         <h2>Compartilhamento</h2>
-        <p>Os dados passam pelo Firebase (Google) para auth, banco, mensagens e analytics. Não compartilhamos com outros anunciantes.</p>
+        <p>Os dados passam pelo Firebase (Google) para auth, banco, mensagens e analytics, e pelo Supabase para ranking, temporadas e push de recompensas dos Eventos Semanais. Não compartilhamos com outros anunciantes. Ficar desconectado evita os recursos de evento na nuvem (a campanha ainda funciona localmente).</p>
       </section>
       <section>
         <h2>Exclusão de conta</h2>
-        <p>No app (tela Conta), jogadores logados podem excluir a conta. Isso remove as credenciais do Firebase Auth e os nós na nuvem que controlamos para esse usuário (perfil, token FCM, save, inbox). Os dados locais criptografados no aparelho são apagados. Reportes de bug já enviados podem permanecer para suporte até a equipe limpar. Agregados de Analytics já processados pelo Google não são revertidos individualmente.</p>
+        <p>No app (tela Conta), jogadores logados podem excluir a conta. Isso remove as credenciais do Firebase Auth e os nós na nuvem que controlamos para esse usuário (perfil, token FCM, save, inbox). Os dados locais criptografados no aparelho são apagados. Linhas de ranking no Supabase podem permanecer até limpeza do evento. Reportes de bug já enviados podem permanecer para suporte até a equipe limpar. Agregados de Analytics já processados pelo Google não são revertidos individualmente.</p>
       </section>
       <section>
         <h2>Contato</h2>
-        <!-- 📧 E-mail oficial adicionado -->
-        <p>Você pode nos contatar pelo e-mail <strong>destroyershape@gmail.com</strong> para dúvidas sobre privacidade ou suporte.  
-        Também pode usar o reporte de bug no app após entrar, ou falar com o desenvolvedor pela página do Google Play.</p>
+        <p>Você pode nos contatar pelo e-mail <strong><a href="mailto:destroyershape@gmail.com">destroyershape@gmail.com</a></strong> para dúvidas sobre privacidade ou suporte. Também pode usar o reporte de bug no app após entrar, ou falar com o desenvolvedor pela página do Google Play.</p>
       </section>
     </div>
 
@@ -191,8 +197,8 @@
       btnEn.classList.toggle('active', !isPt);
       btnPt.classList.toggle('active', isPt);
       updated.textContent = isPt
-        ? 'Política de privacidade · Atualizado julho 2026'
-        : 'Privacy Policy · Updated July 2026';
+        ? 'Política de privacidade · Atualizado agosto 2026'
+        : 'Privacy Policy · Updated August 2026';
       document.documentElement.lang = isPt ? 'pt' : 'en';
     }
   </script>
