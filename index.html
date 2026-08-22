@@ -95,19 +95,22 @@
     <div id="content-en">
       <section>
         <h2>Summary</h2>
-        <p>Shape Destroyer is a local-first game. Progress lives mainly on your device in an encrypted database. Cloud features (account, save sync, notifications) use Google Firebase when you sign in. Weekly Event leaderboards, seasons, and reward delivery use Supabase.</p>
+        <p>Shape Destroyer is a local-first game. Progress lives mainly on your device in an encrypted database. Cloud features (account, save sync, notifications) use Google Firebase when you sign in. Weekly Event leaderboards, seasons, and prize grants use Supabase (prizes are pulled in-app — not pushed by FCM).</p>
       </section>
       <section>
         <h2>What we may collect</h2>
         <ul>
           <li>Account email and ID if you sign in (Firebase Auth).</li>
           <li>Optional encrypted cloud save of game progress (Firebase).</li>
-          <li>Push notification token for inbox messages and event rewards (FCM).</li>
+          <li>Push notification token for inbox / system messages (FCM) — not used to push Weekly Event ranking prizes.</li>
+          <li>On Android installs from Google Play: a version check via Play Services to offer optional in-app update prompts (no extra personal profile fields).</li>
+          <li>In-app purchase receipts processed by Google Play Billing (purchase id and product id — not your full payment card).</li>
+          <li>Optional ads on Android via Google AdMob (rewarded videos and banners); AdMob may collect device/ad data under Google's policies.</li>
           <li>Bug reports you choose to send (title and description).</li>
           <li>Usage analytics on Android/iOS (screens and key game events) via Firebase Analytics — not on Windows.</li>
           <li>Crash diagnostics on Android/iOS via Firebase Crashlytics (stack traces and device info).</li>
           <li>Gameplay data stored on your device (encrypted), including Weekly Event tickets and pending offline run queues in your local save.</li>
-          <li>When signed in and playing Weekly Events: run results (level reached, kill score / duration, Firebase user id, display name) and FCM token for reward delivery via our Supabase backend.</li>
+          <li>When signed in and playing Weekly Events: run results (level reached, kill score / duration, Firebase user id, display name). Season prizes live in Supabase and are pulled into Inbox when you open Events.</li>
         </ul>
       </section>
       <section>
@@ -116,15 +119,23 @@
       </section>
       <section>
         <h2>Storage</h2>
-        <p>Progress lives mainly on your device (encrypted). Cloud saves and account data are stored in Firebase when you sign in and sync. Weekly Event leaderboard rows and season data are stored in Supabase (PostgreSQL) via secure server functions. Analytics events are processed by Google Firebase. Logging out can wipe the local encrypted database on this device.</p>
+        <p>Progress lives mainly on your device (encrypted). Cloud saves and account data are stored in Firebase when you sign in and sync. Weekly Event leaderboard rows, season data, and prize grant records are stored in Supabase (PostgreSQL) via secure server functions. Analytics events are processed by Google Firebase. Logging out can wipe the local encrypted database on this device.</p>
       </section>
       <section>
         <h2>Analytics</h2>
         <p>On mobile we measure app opens, screens visited, and actions such as login, starting/finishing a run, opening chests, cloud save, and bug reports. Events are aggregated and do not include your email or player name. Analytics is not collected on the Windows build.</p>
       </section>
       <section>
+        <h2>Advertising</h2>
+        <p>On Android we may show optional rewarded video ads and small banner ads through Google AdMob (for example daily bonus rewards). AdMob may use device identifiers and ad interaction data under Google's policies to deliver and measure ads. VIP removes ads. You can manage ad personalization in your Google account settings.</p>
+      </section>
+      <section>
+        <h2>In-app purchases</h2>
+        <p>On Android you can buy Prism packs and optional VIP through Google Play Billing. Google processes payment; we receive purchase confirmation (product and transaction id), not your full card details. Grants are stored on your device and in your cloud save when signed in to prevent duplicate rewards. Refunds follow Google Play policies.</p>
+      </section>
+      <section>
         <h2>Sharing</h2>
-        <p>Data is processed through Firebase (Google) for authentication, database, messaging, and analytics, and through Supabase for Weekly Event leaderboards, seasons, and reward pushes. We do not share your data with other advertisers. Staying signed out avoids event cloud features (campaign still works locally).</p>
+        <p>Data is processed through Firebase (Google) for authentication, database, messaging, and analytics; through Google Play for in-app purchases; through Google AdMob when ads are shown; and through Supabase for Weekly Event leaderboards, seasons, and prize grants (pulled into Inbox in-app). We do not sell your personal data to third parties. Staying signed out avoids event cloud features (campaign still works locally).</p>
       </section>
       <section>
         <h2>Account deletion</h2>
@@ -139,19 +150,22 @@
     <div id="content-pt" class="hidden">
       <section>
         <h2>Resumo</h2>
-        <p>Shape Destroyer é um jogo local-first. O progresso fica principalmente no seu aparelho, em banco criptografado. Recursos na nuvem (conta, sync, notificações) usam Google Firebase quando você entra. Rankings, temporadas e entrega de recompensas dos Eventos Semanais usam Supabase.</p>
+        <p>Shape Destroyer é um jogo local-first. O progresso fica principalmente no seu aparelho, em banco criptografado. Recursos na nuvem (conta, sync, notificações) usam Google Firebase quando você entra. Rankings, temporadas e grants de prêmio dos Eventos Semanais usam Supabase (prêmios entram no app ao abrir Eventos — sem push FCM de ranking).</p>
       </section>
       <section>
         <h2>O que podemos recolher</h2>
         <ul>
           <li>E-mail e ID da conta se você entrar (Firebase Auth).</li>
           <li>Save opcional criptografado do progresso (Firebase).</li>
-          <li>Token de notificação para mensagens da inbox e recompensas de eventos (FCM).</li>
+          <li>Token de notificação para mensagens da inbox / sistema (FCM) — não usamos push para prêmios de ranking dos Eventos Semanais.</li>
+          <li>Em instalações Android pela Google Play: verificação de versão via Play Services para oferecer aviso opcional de atualização (sem campos extras de perfil pessoal).</li>
+          <li>Recibos de compras no app processados pela Google Play Billing (id da compra e do produto — não o cartão completo).</li>
+          <li>Anúncios opcionais no Android via Google AdMob (vídeos recompensados e banners); o AdMob pode coletar dados de aparelho/anúncio conforme as políticas do Google.</li>
           <li>Reportes de bug que você enviar (título e descrição).</li>
           <li>Analytics de uso no Android/iOS (telas e eventos-chave) via Firebase Analytics — não no Windows.</li>
           <li>Diagnóstico de crashes no Android/iOS via Firebase Crashlytics (stack traces e info do aparelho).</li>
           <li>Dados de jogo no dispositivo (criptografados), incluindo tickets de Eventos Semanais e fila de corridas pendentes no save local.</li>
-          <li>Quando logado e jogando Eventos Semanais: resultados (nível, pontuação de kills / duração, ID Firebase, nome) e token FCM para recompensas via nosso backend Supabase.</li>
+          <li>Quando logado e jogando Eventos Semanais: resultados (nível, pontuação de kills / duração, ID Firebase, nome). Prêmios da temporada ficam no Supabase e entram na Inbox ao abrir Eventos.</li>
         </ul>
       </section>
       <section>
@@ -160,15 +174,23 @@
       </section>
       <section>
         <h2>Armazenamento</h2>
-        <p>O progresso fica principalmente no seu aparelho (criptografado). Saves na nuvem e dados de conta ficam no Firebase quando você entra e sincroniza. Ranking e temporadas de eventos ficam no Supabase (PostgreSQL) via funções seguras no servidor. Eventos de Analytics são processados pelo Google Firebase. Sair da conta pode apagar o banco local criptografado neste dispositivo.</p>
+        <p>O progresso fica principalmente no seu aparelho (criptografado). Saves na nuvem e dados de conta ficam no Firebase quando você entra e sincroniza. Ranking, temporadas e registros de prêmio de eventos ficam no Supabase (PostgreSQL) via funções seguras no servidor. Eventos de Analytics são processados pelo Google Firebase. Sair da conta pode apagar o banco local criptografado neste dispositivo.</p>
       </section>
       <section>
         <h2>Analytics</h2>
         <p>No mobile medimos abertura do app, telas e ações como login, começar/terminar corrida, baús, save na nuvem e reportes. Os eventos são agregados e não incluem e-mail nem nome do jogador. Analytics não é coletado no build Windows.</p>
       </section>
       <section>
+        <h2>Publicidade</h2>
+        <p>No Android podemos exibir anúncios opcionais em vídeo (recompensados) e banners pequenos via Google AdMob (por exemplo recompensas diárias por anúncio). O AdMob pode usar identificadores do aparelho e dados de interação com anúncios conforme as políticas do Google. VIP remove anúncios. Você pode gerenciar personalização de anúncios nas configurações da sua conta Google.</p>
+      </section>
+      <section>
+        <h2>Compras no app</h2>
+        <p>No Android você pode comprar pacotes de Prismas e VIP opcional via Google Play Billing. A Google processa o pagamento; recebemos a confirmação da compra (produto e id da transação), não os dados completos do cartão. Os grants ficam no aparelho e no save na nuvem quando logado, para evitar recompensas duplicadas. Reembolsos seguem as políticas da Google Play.</p>
+      </section>
+      <section>
         <h2>Compartilhamento</h2>
-        <p>Os dados passam pelo Firebase (Google) para auth, banco, mensagens e analytics, e pelo Supabase para ranking, temporadas e push de recompensas dos Eventos Semanais. Não compartilhamos com outros anunciantes. Ficar desconectado evita os recursos de evento na nuvem (a campanha ainda funciona localmente).</p>
+        <p>Os dados passam pelo Firebase (Google) para auth, banco, mensagens e analytics; pela Google Play para compras no app; pelo Google AdMob quando anúncios são exibidos; e pelo Supabase para ranking, temporadas e grants de prêmio dos Eventos Semanais (puxados para a Inbox no app). Não vendemos seus dados pessoais a terceiros. Ficar desconectado evita os recursos de evento na nuvem (a campanha ainda funciona localmente).</p>
       </section>
       <section>
         <h2>Exclusão de conta</h2>
